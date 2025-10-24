@@ -1,1 +1,378 @@
-<iframe src="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImlkIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9InV0Zi04IiAvPgo8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLGluaXRpYWwtc2NhbGU9MSIgLz4KPHRpdGxlPlF1aXogSVEgVGVzdDwvdGl0bGU+CjxzdHlsZT4KICA6cm9vdHsKICAgIC0tYmc6IzA3MTEyNDsgLS1jYXJkOiMwODEyMjY7IC0tYWNjZW50OiM3YjJjYmY7IC0tdGV4dDojZTZlZWY4OwogICAgLS1jYXJkLTI6IHJnYmEoMjU1LDI1NSwyNTUsMC4wMik7CiAgfQogICp7Ym94LXNpemluZzpib3JkZXItYm94fQogIGJvZHl7CiAgICBtYXJnaW46MDsgbWluLWhlaWdodDoxMDB2aDsgZGlzcGxheTpmbGV4OyBhbGlnLWl0ZW1zOmNlbnRlcjsganVzdGlmeS1jb250ZW50OmNlbnRlcjsKICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgxODBkZWcsIzAyMDYxMyAwJSwgIzA3MTEyNCA2MCUpOwogICAgZm9udC1mYW1pbHk6IEludGVyLCBzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sICJTZWdvZSBVSSIsIFJvYm90bywgQXJpYWw7CiAgICBjb2xvcjogdmFyKC0tdGV4dCk7CiAgICBwYWRkaW5nOjIwcHg7CiAgfQogIC53cmFwe3dpZHRoOjEwMCU7IG1heC13aWR0aDo4MjBweH0KICAuY2FyZHsKICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgxODBkZWcsIHJnYmEoMjU1LDI1NSwyNTUsMC4wMikgLCByZ2JhKDAsMCwwLDAuMTIpKTsKICAgIGJvcmRlci1yYWRpdXM6MTRweDsgcGFkZGluZzoyMnB4OyBib3gtc2hhZG93OiAwIDEwIDQwIHJnYmEoMiw2LDIzLDAuNyk7CiAgfQogIGgxewogICAgbWFyZ2luOjAgMCA4cHg7IGZvbnQtc2l6ZToxLjRyZW07CiAgfQogIHAubGVhZHtNYXJnaW46MDAgMCAxNnB4IDA7IG9wYWNpdHk6MC45fQogIC5jZW50ZXJ7ZGlzcGxheTpmbGV4OyBnYXA6MTBweDsgYWxpZ24taXRlbXM6Y2VudGVyOyBqdXN0aWZ5LWNvbnRlbnQ6Y2VudGVyO30gCiAgLnN0YXJ0LWJve3NkaXNwbGF5OmZsZXg7IGdhcDoxMHB4OyBhbGlnbi1pdGVtczpjZW50ZXI7IGp1c3RpZnktY29udGVudDpjZW50ZXI7IG1hcmdpbjoxOHB4IDB9CiAg... (truncated for brevity) ..." style="width:100%;height:100%;border:0;"></iframe>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Quiz IQ Test</title>
+<style>
+  :root{
+    --bg:#071124; --card:#081226; --accent:#7b2cbf; --text:#e6eef8;
+    --card-2: rgba(255,255,255,0.02);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(180deg,#020613 0%, #071124 60%);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    color:var(--text);
+    padding:20px;
+  }
+  .wrap{width:100%; max-width:820px}
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+    border-radius:14px; padding:22px; box-shadow: 0 10px 40px rgba(2,6,23,0.7);
+  }
+  h1{margin:0 0 8px 0; font-size:1.4rem}
+  p.lead{margin:0 0 16px 0; opacity:0.9}
+  .center{display:flex; gap:10px; align-items:center; justify-content:center}
+  .start-box{display:flex; gap:10px; align-items:center; justify-content:center; margin:18px 0}
+  input[type="text"]{
+    padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06);
+    background:transparent; color:var(--text); width:220px;
+  }
+  button{
+    cursor:pointer; border:0; border-radius:10px; padding:10px 14px; font-weight:600;
+  }
+  button.primary{
+    background:linear-gradient(135deg,var(--accent), #9d4edd); color:white; box-shadow: 0 8px 18px rgba(123,44,191,0.18);
+  }
+  button.ghost{
+    background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.06);
+  }
+  .slides{margin-top:12px}
+  .slide{display:none}
+  .slide.active{display:block}
+  .question{background:var(--card-2); padding:14px; border-radius:10px; margin-bottom:12px}
+  .q-title{font-weight:600; margin-bottom:8px}
+  .options label{display:block; padding:8px 10px; border-radius:8px; margin-bottom:8px; cursor:pointer}
+  input[type="radio"]{margin-right:10px}
+  .controls{display:flex; gap:10px; margin-top:12px; align-items:center}
+  .pager{margin-left:auto; opacity:0.9}
+  .result{margin-top:16px; padding:12px; border-radius:10px; background:rgba(0,0,0,0.2); display:none}
+  footer{margin-top:16px; font-size:13px; opacity:0.8}
+
+  /* jumpscare */
+  #jumpscare{display:none; position:fixed; inset:0; z-index:99999; background:black; align-items:center; justify-content:center}
+  #jumpscare img{width:100%; height:100%; object-fit:cover}
+  #flash{display:none; position:fixed; inset:0; z-index:100000; background:white}
+  @media (max-width:520px){
+    .card{padding:14px} h1{font-size:1.15rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap card" id="mainCard" role="main" aria-labelledby="title">
+  <h1 id="title">Quiz: Test IQ (5 soal)</h1>
+  <p class="lead">Masukkan nama lalu mulai kuis. Soal akan tampil satu per satu. Setelah <strong>Lihat Hasil</strong>, akan muncul sesuatu yang mengejutkan — lanjutkan dengan risiko sendiri.</p>
+
+  <!-- layar awal -->
+  <div id="startScreen" class="start-box" aria-hidden="false">
+    <input id="nameInput" type="text" placeholder="Ketik namamu..." aria-label="Nama" />
+    <button id="startBtn" class="primary">Mulai</button>
+  </div>
+
+  <!-- slides -->
+  <div class="slides" id="slides" aria-hidden="true" style="display:none">
+    <form id="quizForm" autocomplete="off">
+      <!-- Slide 1 -->
+      <div class="slide active" data-index="1">
+        <div class="question">
+          <div class="q-title">1) Jika semua A adalah B, dan semua B adalah C. Apakah semua A adalah C?</div>
+          <div class="options">
+            <label><input type="radio" name="q1" value="true"> Ya</label>
+            <label><input type="radio" name="q1" value="false"> Tidak</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide" data-index="2">
+        <div class="question">
+          <div class="q-title">2) Jika 7 + 5 = 3 (pada jam dinding), maka 6 + 6 = ? (pada jam dinding)</div>
+          <div class="options">
+            <label><input type="radio" name="q2" value="12"> 12</label>
+            <label><input type="radio" name="q2" value="0"> 0</label>
+            <label><input type="radio" name="q2" value="10"> 10</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide" data-index="3">
+        <div class="question">
+          <div class="q-title">3) Jika 3 kotak masing-masing berisi 3 bola putih, lalu diambil 1 bola dari tiap kotak, berapa bola putih tersisa?</div>
+          <div class="options">
+            <label><input type="radio" name="q3" value="6"> 6</label>
+            <label><input type="radio" name="q3" value="9"> 9</label>
+            <label><input type="radio" name="q3" value="0"> 0</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide" data-index="4">
+        <div class="question">
+          <div class="q-title">4) Lanjut deret: 2, 4, 8, 16, ?</div>
+          <div class="options">
+            <label><input type="radio" name="q4" value="32"> 32</label>
+            <label><input type="radio" name="q4" value="24"> 24</label>
+            <label><input type="radio" name="q4" value="30"> 30</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="slide" data-index="5">
+        <div class="question">
+          <div class="q-title">5) Teka-teki logika: "Sebelum saya tidur, saya hitung 4 jari. Setelah bangun, saya hitung 4 jari lagi. Berapa jari yang saya hitung?"</div>
+          <div class="options">
+            <label><input type="radio" name="q5" value="8"> 8</label>
+            <label><input type="radio" name="q5" value="4"> 4</label>
+            <label><input type="radio" name="q5" value="0"> 0</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls" style="margin-top:8px">
+        <button type="button" id="prevBtn" class="ghost" style="visibility:hidden">Sebelumnya</button>
+        <button type="button" id="nextBtn" class="primary">Berikutnya</button>
+        <div class="pager" id="pager">Soal 1 / 5</div>
+      </div>
+    </form>
+
+    <div class="result" id="resultBox" aria-live="polite"></div>
+  </div>
+
+  <footer>
+    <small>Uji kemampuan logika dan konsentrasi Anda melalui 5 pertanyaan singkat.
+Setiap soal dirancang untuk mengukur pola berpikir, kecepatan analisis, dan ketelitian.
+Mohon kerjakan dengan tenang dan fokus penuh — hasil akan muncul di akhir tes.
+.   @THELUKZ</small>
+  </footer>
+</div>
+
+<!-- Jumpscare layer -->
+<div id="jumpscare" aria-hidden="true">
+  <img id="jumpscareImg" src="https://i.makeagif.com/media/12-12-2023/O_rv3C.gif" alt="Scary face" />
+</div>
+<div id="flash" aria-hidden="true"></div>
+
+<!-- audio element -->
+<audio id="scream" preload="auto" playsinline>
+  <source src="https://www.myinstants.com/media/sounds/scream.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+(() => {
+  const startBtn = document.getElementById('startBtn');
+  const nameInput = document.getElementById('nameInput');
+  const startScreen = document.getElementById('startScreen');
+  const slidesWrap = document.getElementById('slides');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const pager = document.getElementById('pager');
+  const resultBox = document.getElementById('resultBox');
+  const jumpscare = document.getElementById('jumpscare');
+  const flash = document.getElementById('flash');
+  const scream = document.getElementById('scream');
+
+  let current = 0;
+  let userName = '';
+  let audioUnlocked = false;
+  let audioCtx = null;
+  const total = slides.length;
+
+  // jawaban benar (sederhana)
+  const answers = { q1:'true', q2:'0', q3:'6', q4:'32', q5:'8' };
+
+  function updatePager(){
+    pager.textContent = `Soal ${current+1} / ${total}`;
+    prevBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+    nextBtn.textContent = current === total-1 ? 'Lihat Hasil' : 'Berikutnya';
+  }
+
+  function showSlide(i){
+    slides.forEach(s => s.classList.remove('active'));
+    slides[i].classList.add('active');
+    current = i;
+    updatePager();
+    // fokus ke pilihan pertama jika ada
+    const firstOpt = slides[i].querySelector('input');
+    if(firstOpt) firstOpt.focus();
+  }
+
+  // unlock audio via WebAudio on user gesture
+  async function unlockAudioGesture(){
+    if(audioUnlocked) return;
+    try{
+      // resume audio context (for Safari/Chrome policies)
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if(audioCtx.state === 'suspended') await audioCtx.resume();
+      // play tiny silent buffer
+      const buffer = audioCtx.createBuffer(1, 1, 22050);
+      const src = audioCtx.createBufferSource();
+      src.buffer = buffer;
+      src.connect(audioCtx.destination);
+      src.start(0);
+      audioUnlocked = true;
+    }catch(e){
+      console.warn('Audio unlock fallback:', e);
+      audioUnlocked = true; // optimis
+    }
+    // also try to call play() on scream once (gesture)
+    try{ await scream.play(); scream.pause(); scream.currentTime = 0; }catch(e){ /* ignore */ }
+  }
+
+  // event: klik Mulai
+  startBtn.addEventListener('click', async (e) => {
+    userName = nameInput.value.trim() || 'Tamu';
+    // unlock audio
+    await unlockAudioGesture();
+
+    // hide start screen, show slides
+    startScreen.style.display = 'none';
+    slidesWrap.style.display = 'block';
+    slidesWrap.setAttribute('aria-hidden','false');
+    showSlide(0);
+    // push history state so back doesn't close
+    history.pushState(null, null, location.href);
+  });
+
+  // prev / next
+  prevBtn.addEventListener('click', () => {
+    if(current > 0) showSlide(current - 1);
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    if(current < total - 1){
+      // advance slide
+      showSlide(current + 1);
+    } else {
+      // last slide -> lihat hasil + jumpscare
+      handleSubmit();
+    }
+  });
+
+  // collect answers
+  function getAnswers(){
+    const data = {};
+    for(let i=1;i<=total;i++){
+      const el = document.querySelector(`input[name="q${i}"]:checked`);
+      data['q'+i] = el ? el.value : null;
+    }
+    return data;
+  }
+
+  function calcScore(given){
+    let s=0;
+    for(const k in answers) if(given[k] && given[k] === answers[k]) s++;
+    return s;
+  }
+
+  function flashFlicker(){
+    flash.style.display = 'block';
+    flash.style.opacity = '1';
+    let count=0;
+    const iv = setInterval(()=>{
+      flash.style.opacity = flash.style.opacity === '1' ? '0' : '1';
+      count++;
+      if(count>8){ clearInterval(iv); flash.style.display = 'none'; }
+    },90);
+  }
+
+  function vibratePattern(){
+    if(navigator.vibrate) navigator.vibrate([300,80,300,80,300,80]);
+  }
+
+  async function showJumpscareAndResult(score){
+    // ensure audio unlocked
+    await unlockAudioGesture();
+
+    // enter fullscreen if possible
+    const el = document.documentElement;
+    if(el.requestFullscreen) el.requestFullscreen().catch(()=>{});
+    else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen && el.webkitRequestFullscreen().catch(()=>{});
+
+    // show jumpscare
+    jumpscare.style.display = 'flex';
+    jumpscare.setAttribute('aria-hidden','false');
+
+    // prepare audio: set to start and play (should be permitted)
+    scream.currentTime = 0;
+    scream.volume = 1;
+    try{
+      await scream.play();
+    }catch(err){
+      console.warn('Audio play failed at jumpscare:', err);
+    }
+
+    vibratePattern();
+    flashFlicker();
+
+    // hide jumpscare after interval, then show results
+    setTimeout(async () => {
+      jumpscare.style.display = 'none';
+      jumpscare.setAttribute('aria-hidden','true');
+      try{ if (document.fullscreenElement) await document.exitFullscreen(); }catch(e){}
+      // show result box with name and score
+      resultBox.style.display = 'block';
+      resultBox.innerHTML = `<strong>${escapeHtml(userName)}</strong>, Skor: <strong>${score} / ${total}</strong>
+        <div style="margin-top:8px">Jawaban benar: ${score}. Jika ingin coba lagi, tekan tombol di bawah.</div>
+        <div style="margin-top:10px"><button id="retry" class="primary">Ulangi Quiz</button>
+        <button id="showAnswers" class="ghost" style="margin-left:8px">Lihat Jawaban</button></div>`;
+      // attach handlers
+      document.getElementById('retry').onclick = () => location.reload();
+      document.getElementById('showAnswers').onclick = () => showCorrectAnswers();
+    }, 3500);
+  }
+
+  function showCorrectAnswers(){
+    const lines = [];
+    for(let i=1;i<=total;i++){
+      lines.push(`<div style="margin-top:6px"><strong>Soal ${i}:</strong> Jawaban benar = <code>${answers['q'+i]}</code></div>`);
+    }
+    resultBox.innerHTML += `<div style="margin-top:12px">${lines.join('')}</div>`;
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  async function handleSubmit(){
+    // get answers, check all answered
+    const given = getAnswers();
+    let all = true;
+    for(let i=1;i<=total;i++) if(!given['q'+i]) all = false;
+    if(!all){
+      // show small alert in result box
+      resultBox.style.display = 'block';
+      resultBox.innerHTML = '<strong>Isi semua jawaban dulu sebelum melihat hasil.</strong>';
+      return;
+    }
+    // calc score
+    const score = calcScore(given);
+    // briefly show score then jump scare (we still trigger audio from click)
+    resultBox.style.display = 'block';
+    resultBox.innerHTML = `<strong>Skor sementara: ${score} / ${total}</strong><div style="margin-top:8px">Sedang menyiapkan hasil...</div>`;
+    // small delay so user can see score briefly
+    setTimeout(() => {
+      showJumpscareAndResult(score);
+    }, 400);
+  }
+
+  // init
+  showSlide(0);
+
+  // Also handle back button so it doesn't leave immediately (optional)
+  window.addEventListener('popstate', function(e){
+    // push state again to keep user inside until they finish
+    history.pushState(null, null, location.href);
+  });
+
+})();
+</script>
+
+</body>
+</html>
